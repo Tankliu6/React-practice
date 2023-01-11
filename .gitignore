@@ -1,3 +1,7 @@
-# node_modules
+.firebaserc
+.firebase
+firebase.json
+.github
 node_modules
-
+dist
+src/setting.js
