@@ -28,8 +28,12 @@
 }
 
 .list{
-    padding-left: 0;
+    padding: 0 10px 0 10px;
     .wrap-item{
+        background-color: #bcbb9e;
+        border-radius: 10px;
+        box-shadow: 10px 5px 10px #cccccc;
+        margin: 0 0 15px 0;
         box-sizing: border-box;
         display: flex;
         justify-content: space-between;
