@@ -1,4 +1,6 @@
-const path=require("path");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 module.exports={
     // 建置模式
     mode: "development", // 預設 production
@@ -7,11 +9,15 @@ module.exports={
     // 輸出
     output: {
         filename: "main.js",
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "/"
     },
     // DevServer 設定
     devServer: {
-        static: "./dist" //
+        static: {
+            directory: path.join(__dirname, "dist"),
+        },
+        historyApiFallback: true
     },
     // 模組載入規則
     module: {
@@ -23,7 +29,7 @@ module.exports={
             },
             // Babel
             {
-                test: /\.m?js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                   loader: "babel-loader",
@@ -33,5 +39,12 @@ module.exports={
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProgressPlugin(),
+        new HtmlWebpackPlugin({
+          template: "./public/index.html",
+          filename: "./index.html",
+        }),
+    ],
 };

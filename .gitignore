@@ -3,5 +3,5 @@
 firebase.json
 .github
 node_modules
-main.js
+dist
 src/setting.js

@@ -55,6 +55,11 @@
             padding: 5px 10px 5px 10px;
             margin-left: 20px;
             margin-right: 20px;
+            &:hover{
+                opacity: 0.8;
+                box-shadow: 0 0 10px #c3e2cb;
+                margin-bottom: 2px;
+            }
         }
     }
 }
