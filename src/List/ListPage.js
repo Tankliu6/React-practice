@@ -1,5 +1,5 @@
 import "./ListPage.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import {
     doc,
@@ -19,11 +19,11 @@ import {  NavLink } from "react-router-dom";
 const collectionMessage = collection(db, "message");
 
 export default function ListPage(){
-    const [init, setInit] = useState(true);
     //initialize state to hold the list of items
     const [items, setItems] = useState([]);
     const [docRefId, setDocRefId] = useState([]);
-    if (init){
+    
+    useEffect(() => {
         const ids = [];
         const docs = [];
         async function MessageFromFirestore(){
@@ -40,13 +40,10 @@ export default function ListPage(){
                 setDocRefId([...docRefId, ...ids]);       
             }catch(e){
                 console.log(e);
-            }finally{
-                setInit(false);
-            };
-        }
+            }
+        };
         MessageFromFirestore();
-    };
-
+    }, [])
 
     async function handleAddItem(){
         const message = document.querySelector(".record-input").value;
